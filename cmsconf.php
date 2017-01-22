@@ -68,8 +68,6 @@ function make() {
 		}
 		$new_string = implode(",\n                              ", $new_string_arr);
 		$conf = str_replace($origin_string[$servicename], $new_string, $conf);
-		echo $servicename."\n";
-		echo $new_string."\n";
 	}
 	file_put_contents("cms.conf", $conf);
 }

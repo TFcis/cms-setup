@@ -50,6 +50,7 @@ help:
 	@echo "           Usage: make service s=[SERVICE] c=[COUNT]"
 	@echo "             default: COUNT=1"
 	@echo "show       show all service"
+	@echo "showthis   show this ip service"
 	@echo "sys        kill cms & disable firewall"
 	@echo "install    install all requirements & cms"
 	@echo "getconf    make & download cms.conf"
