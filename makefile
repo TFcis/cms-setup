@@ -7,7 +7,6 @@ main: download sys install
 download: 
 	sudo wget http://dev.tfcis.org/cms/install.sh
 	sudo wget http://dev.tfcis.org/cms/service.sh
-	sudo wget http://dev.tfcis.org/cms/delip.sh
 	sudo wget http://dev.tfcis.org/cms/show.sh
 	sudo wget http://dev.tfcis.org/cms/showthis.sh
 	sudo wget http://dev.tfcis.org/cms/sys.sh
@@ -17,14 +16,13 @@ download:
 chmod:
 	sudo chmod 777 install.sh
 	sudo chmod 777 service.sh
-	sudo chmod 777 delip.sh
 	sudo chmod 777 show.sh
 	sudo chmod 777 showthis.sh
 	sudo chmod 777 sys.sh
 	sudo chmod 777 getconf.sh
 	sudo chmod 777 start.sh
 rmfile:
-	rm install.sh service.sh delip.sh show.sh showthis.sh sys.sh getconf.sh start.sh
+	rm install.sh service.sh show.sh showthis.sh sys.sh getconf.sh start.sh
 service:
 	./service.sh $(s) $(c)
 show:
@@ -67,3 +65,10 @@ help:
 	@echo "2. make service"
 	@echo "3. make getconf"
 	@echo "4. make start"
+setup:
+	sudo touch cms.conf
+	sudo chmod 777 cms.conf
+	sudo touch cms.example.conf
+	sudo chmod 777 cms.example.conf
+	sudo touch services.json
+	sudo chmod 777 services.json
