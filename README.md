@@ -13,20 +13,22 @@
 4. ```make getconf```
 5. ```make start```
 
+配置 ```Worker 4``` 步驟 2~5 可改成 ```make all```
+
 ## 指令
 使用方法: ```make [OPTION]```
 
 OPTION     |效果
 ---|---
-download   |下載所有```.sh```檔
-chmod      |設定```.sh```權限777
-rmfile     |刪除所有```.sh```檔
-service    |設定Service <br> 使用方法:```make service s=[SERVICE] c=[COUNT]``` <br> 預設值: ```make service s=Worker c=4``` <br> 預設值: ```make service s=[SERVICE] c=1```
-show       |顯示所有Service設定
-showthis   |顯示本機Service設定
+download   |下載所有 ```.sh``` 檔 & 執行 ```chmod```
+chmod      |設定所有 ```.sh``` 檔權限 ```777```
+rmfile     |刪除所有 ```.sh``` 檔
+service    |設定Service <br> 使用方法: ```make service s=[SERVICE] c=[COUNT]``` <br> 預設值: ```make service s=Worker c=4``` <br> 預設值: ```make service s=[SERVICE] c=1```
+show       |顯示所有 Service 設定
+showthis   |顯示本機 Service 設定
 sys        |kill 所有 cms 程序 & 關閉防火牆
-install    |安裝所有需要程式和CMS
-getconf    |產生 ```cms.conf``` 並下載
-start      |啟動本機所有Service
+install    |安裝所有需要程式 & CMS
+getconf    |產生 ```cms.conf``` & 下載
+start      |啟動本機所有 Service
 main       |執行 ```download``` & ```sys``` & ```install```
 all        |執行 ```main``` & ```service Worker 4``` & ```getconf``` & ```start```
