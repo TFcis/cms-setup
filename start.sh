@@ -1,10 +1,17 @@
 #! /bin/bash
 ip=$(ifconfig | grep -Po "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" | head -1)
-worker=$(curl http://dev.tfcis.org/cms/ip2worker.php?ip=$ip)
-rs=$(curl http://dev.tfcis.org/cms/ip2rs.php?ip=$ip)
-echo "This machine ip="$ip" Worker="$worker","$(($worker+1))","$(($worker+2))","$(($worker+3))" ResourceService="$rs
-sudo cmsWorker $worker &
-sudo cmsWorker $(($worker+1)) &
-sudo cmsWorker $(($worker+2)) &
-sudo cmsWorker $(($worker+3)) &
-sudo cmsResourceService $rs
+echo "This machine ip is "$ip
+
+for service in LogService ResourceService ScoringService Checker EvaluationService Worker ContestWebServer AdminWebServer ProxyService PrintingService TestFileCacher
+do
+	echo $service
+	start=$(curl -s "http://dev.tfcis.org/cms/cmsconf.php?getstart&ip="$ip"&start="$service)
+	count=$(curl -s "http://dev.tfcis.org/cms/cmsconf.php?getcount&ip="$ip"&count="$service)
+	if [ "${start}" != "-1" ]; then
+		for (( i=$start; i<$start+$count; i++ ))
+		do
+			sudo cms$service $i &
+			echo "cms"$service" "$i
+		done
+	fi
+done

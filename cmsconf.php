@@ -87,12 +87,24 @@ function show() {
 		echo "\n";
 	}
 }
+function showthis($ip) {
+	$services = getservices();
+	global $portlist;
+	foreach ($portlist as $servicename => $temp) {
+		echo $servicename.": ";
+		$index = checkipexist($servicename, $ip);
+		if ($index === false) {
+			echo "0\n";
+		} else {
+			echo $services[$servicename][$index][1]."\n";
+		}
+	}
+}
 function getip() {
 	global $_GET;
 	if (!isset($_GET["ip"])) {
 		exit("[ERROR] No IP\n");
 	}
-	echo "Got \"".$_GET["ip"]."\"\n";
 	if (preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/", $_GET["ip"])==0) {
 		exit("[ERROR] Format\n");
 	}
@@ -107,13 +119,63 @@ function checkipexist($service, $ip) {
 	}
 	return false;
 }
+function getippresum($service, $ip) {
+	$services = getservices();
+	$sum = 0;
+	foreach ($services[$service] as $key => $temp) {
+		if ($temp[0] == $ip) {
+			return $sum;
+		}
+		$sum += $temp[1];
+	}
+	return false;
+}
 if (isset($_GET["make"])) {
 	make();
 }
 if (isset($_GET["show"])) {
 	show();
 }
-if (isset($_GET["service"])) {
+if (isset($_GET["showthis"])) {
+	$ip = getip();
+	showthis($ip);
+}
+if (isset($_GET["getstart"])) {
+	$ip = getip();
+	$service = "Worker";
+	if (in_array($_GET["start"], $shortservice)) {
+		$service = $_GET["start"];
+	} else if (isset($shortservice[$_GET["start"]])) {
+		$service = $shortservice[$_GET["start"]];
+	} else if ($_GET["start"] != "") {
+		exit("[ERROR] Wrong service\n");
+	}
+	$sum = getippresum($service, $ip);
+	if ($sum === false) {
+		echo "-1";
+	} else {
+		echo $sum;
+	}
+}
+if (isset($_GET["getcount"])) {
+	$ip = getip();
+	$service = "Worker";
+	if (in_array($_GET["count"], $shortservice)) {
+		$service = $_GET["count"];
+	} else if (isset($shortservice[$_GET["count"]])) {
+		$service = $shortservice[$_GET["count"]];
+	} else if ($_GET["count"] != "") {
+		exit("[ERROR] Wrong service\n");
+	}
+	$index = checkipexist($service, $ip);
+	if ($index === false) {
+		echo "0";
+	} else {
+		$services = getservices();
+		echo $services[$service][$index][1];
+	}
+}
+if (isset($_GET["setservice"])) {
 	$ip = getip();
 	$service = "Worker";
 	if (in_array($_GET["service"], $shortservice)) {
@@ -121,7 +183,7 @@ if (isset($_GET["service"])) {
 	} else if (isset($shortservice[$_GET["service"]])) {
 		$service = $shortservice[$_GET["service"]];
 	} else if ($_GET["service"] != "") {
-		exit("[ERROR] Wrong service\n");
+		exit("[ERROR] Wrong service: ".$_GET["service"]."\n");
 	}
 	$count = 1;
 	if (isset($_GET["count"]) && $_GET["count"] != "") {
