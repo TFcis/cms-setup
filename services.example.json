@@ -1,0 +1,35 @@
+{
+    "LogService": [
+        ["localhost",1]
+    ],
+    "ResourceService": [
+        ["localhost",1]
+    ],
+    "ScoringService": [
+        ["localhost",1]
+    ],
+    "Checker": [
+        ["localhost",1]
+    ],
+    "EvaluationService": [
+        ["localhost",1]
+    ],
+    "Worker": [
+        ["localhost",2]
+    ],
+    "ContestWebServer": [
+        ["localhost",1]
+    ],
+    "AdminWebServer": [
+        ["localhost",1]
+    ],
+    "ProxyService": [
+        ["localhost",1]
+    ],
+    "PrintingService": [
+        ["localhost",1]
+    ],
+    "TestFileCacher": [
+        ["localhost",1]
+    ]
+}

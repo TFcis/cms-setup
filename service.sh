@@ -1,3 +1,3 @@
 #! /bin/bash
 ip=$(ifconfig | grep -Po "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" | head -1)
-curl http://dev.tfcis.org/cms/add.php?ip=$ip
+curl "http://dev.tfcis.org/cms/cmsconf.php?service="$s"&ip="$ip"&count="$c

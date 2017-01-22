@@ -1,3 +1,3 @@
 #! /bin/bash
-curl http://dev.tfcis.org/cms/ip.txt
+curl "http://dev.tfcis.org/cms/cmsconf.php?show"
 echo ""
