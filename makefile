@@ -10,6 +10,7 @@ download:
 	sudo wget http://dev.tfcis.org/cms/show.sh
 	sudo wget http://dev.tfcis.org/cms/showthis.sh
 	sudo wget http://dev.tfcis.org/cms/sys.sh
+	sudo wget http://dev.tfcis.org/cms/makeconf.sh
 	sudo wget http://dev.tfcis.org/cms/getconf.sh
 	sudo wget http://dev.tfcis.org/cms/start.sh
 	make chmod
@@ -19,10 +20,11 @@ chmod:
 	sudo chmod 777 show.sh
 	sudo chmod 777 showthis.sh
 	sudo chmod 777 sys.sh
+	sudo chmod 777 makeconf.sh
 	sudo chmod 777 getconf.sh
 	sudo chmod 777 start.sh
 rmfile:
-	rm install.sh service.sh show.sh showthis.sh sys.sh getconf.sh start.sh
+	rm install.sh service.sh show.sh showthis.sh sys.sh makeconf.sh getconf.sh start.sh
 service:
 	./service.sh $(s) $(c)
 show:
@@ -33,7 +35,9 @@ sys:
 	./sys.sh
 install:
 	./install.sh
-getconf: 
+makeconf: 
+	./makeconf.sh
+getconf: makeconf
 	./getconf.sh
 start:
 	./start.sh

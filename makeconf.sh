@@ -1,2 +1,2 @@
 #! /bin/bash
-curl http://dev.tfcis.org/cms/make.php
+curl "http://dev.tfcis.org/cms/cmsconf.php?make"

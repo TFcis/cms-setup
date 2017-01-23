@@ -1,5 +1,4 @@
 #! /bin/bash
-curl "http://dev.tfcis.org/cms/cmsconf.php?make"
 sudo rm ~/cms/config/cms.conf
 sudo wget http://dev.tfcis.org/cms/cms.conf -P ~/cms/config/
 
