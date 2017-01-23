@@ -1,4 +1,8 @@
 #! /bin/bash
+if [ "${1}" == "" ]
+then
+	echo "missing operand c=[CONTEST]"
+else
 ip=$(ifconfig | grep -Po "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" | head -1)
 echo "This machine ip is "$ip
 
@@ -10,8 +14,9 @@ do
 	if [ "${start}" != "-1" ]; then
 		for (( i=$start; i<$start+$count; i++ ))
 		do
-			sudo cms$service $i &
+			sudo cms$service $i -c $1 &
 			echo "cms"$service" "$i
 		done
 	fi
 done
+fi

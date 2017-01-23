@@ -39,8 +39,8 @@ makeconf:
 	./makeconf.sh
 getconf: makeconf
 	./getconf.sh
-start:
-	./start.sh
+start: sys
+	./start.sh $(c)
 help:
 	@echo "Usage: make [OPTION]"
 	@echo ""
@@ -59,6 +59,7 @@ help:
 	@echo "install    install all requirements & cms"
 	@echo "getconf    make & download cms.conf"
 	@echo "start      start all service"
+	@echo "           Usage: make start c=[CONTEST]"
 	@echo "main       run download & sys & install"
 	@echo "all        run main & service & getconf & start"
 	@echo ""
