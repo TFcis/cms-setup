@@ -1,7 +1,7 @@
 <?php
 $shortservice = array(
 	"l" => "LogService",
-	"rs" => "ResourceService",
+	"r" => "ResourceService",
 	"s" => "ScoringService",
 	"c" => "Checker",
 	"e" => "EvaluationService",
