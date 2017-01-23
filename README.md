@@ -23,12 +23,15 @@ OPTION     |效果
 download   |下載所有 ```.sh``` 檔 & 執行 ```chmod```
 chmod      |設定所有 ```.sh``` 檔權限 ```777```
 rmfile     |刪除所有 ```.sh``` 檔
+redownload |刪除 & 重新下載所有 ```.sh``` 檔
 service    |設定Service <br> 使用方法: ```make service s=[SERVICE] c=[COUNT]``` <br> 預設值: ```make service s=Worker c=4``` <br> 預設值: ```make service s=[SERVICE] c=1```
 show       |顯示所有 Service 設定
 showthis   |顯示本機 Service 設定
 sys        |kill 所有 cms 程序 & 關閉防火牆
 install    |安裝所有需要程式 & CMS
+makeconf   |產生 ```cms.conf```
 getconf    |產生 ```cms.conf``` & 下載
-start      |啟動本機所有 Service
+start      |啟動本機所有 Service <br> 使用方法: ```make start c=[CONTEST]```
 main       |執行 ```download``` & ```sys``` & ```install```
 all        |執行 ```main``` & ```service Worker 4``` & ```getconf``` & ```start```
+help       |顯示此說明

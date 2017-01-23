@@ -25,6 +25,8 @@ chmod:
 	sudo chmod 777 start.sh
 rmfile:
 	rm install.sh service.sh show.sh showthis.sh sys.sh makeconf.sh getconf.sh start.sh
+redownload: rmfile download
+
 service:
 	./service.sh $(s) $(c)
 show:
@@ -48,6 +50,7 @@ help:
 	@echo "download   download all bash file"
 	@echo "chmod      set mod 777 to all bash file"
 	@echo "rmfile     remove all bash file"
+	@echo "redownload remove & download all bash file"
 	@echo "service    set this ip to any service"
 	@echo "           Usage: make service s=[SERVICE]"
 	@echo "             default: SERVICE=Worker COUNT=4"
@@ -57,11 +60,13 @@ help:
 	@echo "showthis   show this ip service"
 	@echo "sys        kill cms & disable firewall"
 	@echo "install    install all requirements & cms"
+	@echo "makeconf   make cms.conf"
 	@echo "getconf    make & download cms.conf"
 	@echo "start      start all service"
 	@echo "           Usage: make start c=[CONTEST]"
 	@echo "main       run download & sys & install"
 	@echo "all        run main & service & getconf & start"
+	@echo "help       get this help"
 	@echo ""
 	@echo "setup worker steps:"
 	@echo "1. make all"
