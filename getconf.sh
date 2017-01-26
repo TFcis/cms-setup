@@ -1,8 +1,8 @@
 #! /bin/bash
-sudo rm ~/cms/config/cms.conf
-sudo wget http://dev.tfcis.org/cms/cms.conf -P ~/cms/config/
+sudo rm cmsrepo/config/cms.conf
+sudo wget http://dev.tfcis.org/cms/cms.conf -P cmsrepo/config/
 
-cd ~/cms
+cd cmsrepo
 sudo ./setup.py build
 sudo ./setup.py install
 sudo cmsInitDB

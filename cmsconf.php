@@ -210,3 +210,16 @@ if (isset($_GET["setservice"])) {
 	}
 	putservices($services);
 }
+if (isset($_GET["record"])) {
+	$ip = getip();
+	$msg = $_GET["message"];
+	$record = file_get_contents("record.csv");
+	if (preg_match("/".$ip.",(.+?)$/m", $record, $match)) {
+		$record = str_replace($match[1], $msg, $record);
+		echo "set ".$ip." record: ".$msg." (origin: ".$match[1].")\n";
+	} else {
+		$record.=$ip.",".$msg."\n";
+		echo "set ".$ip." record: ".$msg."\n";
+	}
+	file_put_contents("record.csv", $record);
+}
