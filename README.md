@@ -4,7 +4,7 @@
 ## 安裝
 1. git clone 此 repo 至網頁伺服器上。
 2. 執行 ```make setup``` 。
-3. 將[這裡的內容](https://github.com/cms-dev/cms/blob/master/config/cms.conf.sample)複製到 ```cms.conf.sample``` 內並設定好，不要修改 ```core_services``` 和 ```other_services```。
+3. 將[這裡的內容](https://github.com/cms-dev/cms/blob/master/config/cms.conf.sample)複製到 ```cms.example.conf``` 內並設定好，不要修改 ```core_services``` 和 ```other_services```。
 
 ## 配置
 1. ```wget example.com/path_to_your_folder/makefile```
